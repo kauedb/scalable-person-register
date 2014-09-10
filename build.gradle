@@ -31,5 +31,51 @@ dependencies {
 }
 */
 
+ext {
 
-apply plugin: 'scala'
+    // scala dependencies
+    scala = [version: '2.11']
+
+    // infrastructure dependencies
+    sl4j = [version: '1.7.7']
+    logback = [version: '1.1.2']
+
+    log = [
+            "org.slf4j:slf4j-api:$sl4j.version",
+            "org.slf4j:jcl-over-slf4j:$sl4j.version",
+            "ch.qos.logback:logback-classic:$logback.version",
+            "ch.qos.logback:logback-core:$logback.version",
+    ]
+}
+
+
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.maiflai:gradle-scalatest:0.4'
+    }
+}
+
+subprojects {
+    group = 'br.com.kauedb.register'
+    version = '1.0'
+
+    apply plugin: 'scala'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+        compile "org.scala-lang:scala-compiler:$scala.version.1"
+        compile "org.scala-lang:scala-library:$scala.version.1"
+        testCompile "org.scalatest:scalatest_$scala.version:2.2.0"
+        testCompile "org.scala-lang:scala-actors:$scala.version.2"
+    }
+
+}
