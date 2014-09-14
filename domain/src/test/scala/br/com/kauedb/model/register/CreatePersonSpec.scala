@@ -1,10 +1,13 @@
 package br.com.kauedb.model.register
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}
 
 /**
  * Created by kauedb.
  */
+@RunWith(classOf[JUnitRunner])
 class CreatePersonSpec extends FeatureSpec with GivenWhenThen with Matchers {
 
   info("As an application developer ")

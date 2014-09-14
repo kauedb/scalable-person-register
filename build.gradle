@@ -31,6 +31,10 @@ dependencies {
 }
 */
 
+wrapper {
+    version = 2.1
+}
+
 ext {
 
     // scala dependencies
@@ -46,6 +50,8 @@ ext {
             "ch.qos.logback:logback-classic:$logback.version",
             "ch.qos.logback:logback-core:$logback.version",
     ]
+
+    junit = [version: '4.11']
 }
 
 
@@ -64,7 +70,6 @@ subprojects {
     group = 'br.com.kauedb.register'
     version = '1.0'
 
-    apply plugin: 'idea'
     apply plugin: 'scala'
 
     repositories {
@@ -77,6 +82,15 @@ subprojects {
         compile "org.scala-lang:scala-library:$scala.version.1"
         testCompile "org.scalatest:scalatest_$scala.version:2.2.0"
         testCompile "org.scala-lang:scala-actors:$scala.version.2"
+
+        testCompile "junit:junit:$junit.version"
     }
 
+    test {
+        testLogging {
+            // set options for log level LIFECYCLE
+            events "failed", "passed", "skipped", "started"
+            exceptionFormat "short"
+        }
+    }
 }
