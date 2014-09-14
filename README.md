@@ -1,4 +1,4 @@
 scalable-person-register
 ========================
 
-Scalla person register model application
+Scala Person Register System
